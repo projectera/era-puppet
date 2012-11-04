@@ -2,6 +2,11 @@ class nagios {
 	package { "nagios3":
 		ensure => "installed",
 	}
+
+	service { "nagios3":
+		ensure => "running",
+		require => Package["nagios3"],
+	}
 	
 	file { "/opt/max":
 		ensure => "directory",
@@ -47,6 +52,14 @@ class nagios {
 		ensure => directory,
 		mode => 775,
 		require => Package["nagios3"],
+	}
+
+	file { "/etc/nagios3/nagios.cfg":
+		ensure => file,
+		mode => 664,
+		source => "puppet:///modules/nagios/nagios.cfg",
+		require => Package["nagios3"],
+		notify => Service["nagios3"],
 	}
 
 	file { "/etc/nagios3/apache2.conf":
