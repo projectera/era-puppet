@@ -36,4 +36,26 @@ class nagios {
 		ensure => link,
 		target => "/opt/max/ldap2nagios",
 	}
+
+	file { "/etc/nagios3/conf.d/contactgroups":
+		ensure => directory,
+		mode => 775,
+		require => Package["nagios3"],
+	}
+
+	file { "/etc/nagios3/conf.d/contacts":
+		ensure => directory,
+		mode => 775,
+		require => Package["nagios3"],
+	}
+
+	file { "/etc/nagios3/apache2.conf":
+		ensure => file,
+		mode => 644,
+		source => "puppet:///modules/nagios/apache2.conf",
+		require => Package["nagios3"],
+		notify => Service["apache2"],
+	}
+
+	apache::loadmodule { "authnz_ldap": }
 }
