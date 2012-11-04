@@ -1,0 +1,377 @@
+dn: cn={15}openxchange
+objectClass: olcSchemaConfig
+cn: {15}openxchange
+olcAttributeTypes: {0}( 1.1.2.1.1.1 NAME ( 'mailEnabled' ) DESC 'Is the user e
+ nabled or not, for pam_ldap,postfix etc. filtering...' EQUALITY caseIgnoreMat
+ ch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{3276
+ 8} SINGLE-VALUE )
+olcAttributeTypes: {1}( 1.1.2.1.1.2 NAME ( 'alias' ) DESC 'email alias' EQUALI
+ TY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.1
+ 15.121.1.15{32768} )
+olcAttributeTypes: {2}( 1.1.2.1.1.3 NAME ( 'imapServer' ) DESC 'Users Imap Ser
+ ver' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1
+ .4.1.1466.115.121.1.15{32768} SINGLE-VALUE )
+olcAttributeTypes: {3}( 1.1.2.1.1.4 NAME ( 'imapPort' ) DESC 'Users Imap Serve
+ r Port' SUP ipServicePort )
+olcAttributeTypes: {4}( 1.1.2.1.1.5 NAME ( 'sievePort' ) DESC 'Users SIEVE Ser
+ ver Port' SUP ipServicePort )
+olcAttributeTypes: {5}( 1.1.2.1.1.6 NAME ( 'smtpServer' ) DESC 'Users SMTP Ser
+ ver' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1
+ .4.1.1466.115.121.1.15{32768} SINGLE-VALUE )
+olcAttributeTypes: {6}( 1.1.2.1.1.7 NAME ( 'smtpPort' ) DESC 'Users SMTP Serve
+ r Port' SUP ipServicePort )
+olcAttributeTypes: {7}( 1.1.2.1.1.8 NAME ( 'relClientCert' ) DESC 'Users Certi
+ ficate for Ip Service like SMTP or IMAP' EQUALITY caseIgnoreMatch SUBSTR case
+ IgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} SINGLE-VALU
+ E )
+olcAttributeTypes: {8}( 1.1.2.1.1.9 NAME ( 'userCountry' ) DESC 'Users country
+  code' SUP name SINGLE-VALUE )
+olcAttributeTypes: {9}( 1.1.2.1.1.10 NAME ( 'loginDestination' ) DESC 'Users D
+ estination - Groupware , Webmail, Config ...' EQUALITY caseIgnoreMatch SUBSTR
+  caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {10}( 1.1.2.1.1.11 NAME ( 'birthDay' ) DESC 'Users birthday
+ ' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.
+ 1.1466.115.121.1.15 )
+olcAttributeTypes: {11}( 1.1.2.1.1.12 NAME ( 'colocRouteAddr' ) DESC 'route ma
+ il to this address' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5Substring
+ sMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} SINGLE-VALUE )
+olcAttributeTypes: {12}( 1.1.2.1.1.13 NAME ( 'reject' ) DESC 'Should contain t
+ he mailaddys to reject' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5Subst
+ ringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
+olcAttributeTypes: {13}( 1.1.2.1.1.14 NAME ( 'lnetMailAccess' ) DESC 'Is the u
+ ser able to send mail to the inet' EQUALITY caseIgnoreMatch SUBSTR caseIgnore
+ SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} SINGLE-VALUE )
+olcAttributeTypes: {14}( 1.1.2.1.1.15 NAME ( 'OXGroupwareStyle' ) DESC 'Groupw
+ are Style' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1
+ .3.6.1.4.1.1466.115.121.1.15{32768} SINGLE-VALUE )
+olcAttributeTypes: {15}( 1.1.2.1.1.16 NAME ( 'OXWebmailStyle' ) DESC 'Webmail 
+ Style' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6
+ .1.4.1.1466.115.121.1.15{32768} SINGLE-VALUE )
+olcAttributeTypes: {16}( 1.1.2.1.1.17 NAME 'OXGroupID' DESC 'GIDs of the secon
+ dary Groups of the User' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.12
+ 1.1.27)
+olcAttributeTypes: {17}( 1.1.2.1.1.18 NAME ( 'OXAppointmentDays' ) DESC 'Days 
+ to display new appointments' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5
+ SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+olcAttributeTypes: {18}( 1.1.2.1.1.19 NAME ( 'OXTaskDays' ) DESC 'Days to disp
+ lay new tasks' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatc
+ h SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+olcAttributeTypes: {19}( 1.1.2.1.1.20 NAME ( 'OXTimeZone' ) EQUALITY caseIgnor
+ eMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{
+ 32768} SINGLE-VALUE )
+olcAttributeTypes: {20}( 1.1.2.1.1.21 NAME ( 'groupwareServer' ) EQUALITY case
+ IgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.
+ 1.15{32768} SINGLE-VALUE )
+olcAttributeTypes: {21}( 1.1.2.1.1.22 NAME ( 'groupwareServerPort' ) SUP ipSer
+ vicePort )
+olcAttributeTypes: {22}( 1.1.2.1.1.23 NAME ( 'webmailServer' ) EQUALITY caseIg
+ noreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.
+ 15{32768} SINGLE-VALUE )
+olcAttributeTypes: {23}( 1.1.2.1.1.24 NAME ( 'webmailServerPort' ) SUP ipServi
+ cePort )
+olcAttributeTypes: {24}( 1.1.2.1.1.25 NAME ( 'DBServer' ) EQUALITY caseIgnoreM
+ atch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32
+ 768} SINGLE-VALUE )
+olcAttributeTypes: {25}( 1.1.2.1.1.26 NAME ( 'DBServerPort' ) SUP ipServicePor
+ t SINGLE-VALUE )
+olcAttributeTypes: {26}( 1.1.2.1.1.27 NAME ( 'DBServerType' ) EQUALITY caseIgn
+ oreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.1
+ 5{32768} SINGLE-VALUE )
+olcAttributeTypes: {27}( 1.1.2.1.1.29 NAME ( 'resourceGroupName' ) SUP name SI
+ NGLE-VALUE )
+olcAttributeTypes: {28}( 1.1.2.1.1.30 NAME ( 'resourceGroupMember' ) DESC 'res
+ ource that is member of a resource group' EQUALITY caseIgnoreMatch SUBSTR cas
+ eIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} )
+olcAttributeTypes: {29}( 1.1.2.1.1.31 NAME ( 'resourceGroupAvailable' ) DESC '
+ Ressource group available in OX' EQUALITY booleanMatch SYNTAX 1.3.6.1.4.1.146
+ 6.115.121.1.7 SINGLE-VALUE )
+olcAttributeTypes: {30}( 1.1.2.1.1.32 NAME ( 'resourceGroupDescription' ) SUP 
+ description SINGLE-VALUE )
+olcAttributeTypes: {31}( 1.1.2.1.1.33 NAME ( 'resourceName' ) SUP name SINGLE-
+ VALUE )
+olcAttributeTypes: {32}( 1.1.2.1.1.34 NAME ( 'resourceAvailable' ) DESC 'Resso
+ urce available in OX' EQUALITY booleanMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1
+ .7 SINGLE-VALUE )
+olcAttributeTypes: {33}( 1.1.2.1.1.35 NAME ( 'resourceDescription' ) SUP descr
+ iption SINGLE-VALUE )
+olcAttributeTypes: {34}( 1.1.2.1.1.36 NAME ( 'mailDomain' ) EQUALITY caseIgnor
+ eMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{
+ 32768} SINGLE-VALUE )
+olcAttributeTypes: {35}( 1.1.2.1.1.37 NAME ( 'vaddress' ) DESC 'vadress' EQUAL
+ ITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1
+ .1466.115.121.1.26{256} )
+olcAttributeTypes: {36}( 1.1.2.1.1.38 NAME ( 'MTALocaldomain' ) EQUALITY caseI
+ gnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1
+ .15{32768} SINGLE-VALUE )
+olcAttributeTypes: {37}( 1.1.2.1.1.39 NAME ( 'mailDeliveryProgram' ) EQUALITY 
+ caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.
+ 121.1.15{32768} )
+olcAttributeTypes: {38}( 1.1.2.1.1.40 NAME ( 'deliverToUID' ) DESC 'direct mai
+ l delivery' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.15{256} )
+olcAttributeTypes: {39}( 1.1.2.1.1.41 NAME ( 'fn' ) SUP name )
+olcAttributeTypes: {40}( 1.1.2.1.1.42 NAME ( 'smtpDomainTransportNexthop' ) DE
+ SC 'contain transport:[nexthop] mail routing information' EQUALITY caseIgnore
+ Match SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{3
+ 2768} SINGLE-VALUE )
+olcAttributeTypes: {41}( 1.1.2.1.1.43 NAME ( 'smtpDomain' ) DESC 'contain host
+ /domain name, used with smtpDomainTransportNexthop' EQUALITY caseIgnoreMatch 
+ SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} 
+ )
+olcAttributeTypes: {42}( 1.1.2.1.1.44 NAME ( 'IPPhone' ) DESC 'User IPPhone Ad
+ dress in Outlook' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {43}( 1.1.2.1.1.45 NAME ( 'url' ) DESC 'Users business Home
+ page' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.
+ 1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {44}( 1.1.2.1.1.46 NAME ( 'otherpager' ) DESC 'Users Busine
+ ss pager' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.
+ 3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {45}( 1.1.2.1.1.47 NAME ( 'otherfacsimiletelephonenumber' )
+  DESC 'Users Home fax number' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubst
+ ringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {46}( 1.1.2.1.1.48 NAME ( 'middleName' ) DESC 'Users middle
+ name' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.
+ 1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {47}( 1.1.2.1.1.49 NAME ( 'conferenceInformation' ) DESC 'U
+ sers n3tmeeting Info' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMat
+ ch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {48}( 1.1.2.1.1.50 NAME ( 'OXUserPosition' ) DESC 'Users po
+ sition' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.
+ 6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {49}( 1.1.2.1.1.51 NAME ( 'OXUserSalesVolume' ) DESC 'Users
+  sales volume' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNT
+ AX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {50}( 1.1.2.1.1.52 NAME ( 'OXUserCity' ) DESC 'Users City' 
+ EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.
+ 1466.115.121.1.15 )
+olcAttributeTypes: {51}( 1.1.2.1.1.53 NAME ( 'OXUserTaxID' ) DESC 'Users Tax I
+ D' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4
+ .1.1466.115.121.1.15 )
+olcAttributeTypes: {52}( 1.1.2.1.1.54 NAME ( 'OXUserComReg' ) DESC 'Users Comm
+ ercial Register' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SY
+ NTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {53}( 1.1.2.1.1.55 NAME ( 'OXUserBranches' ) DESC 'Users Br
+ anches' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.
+ 6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {54}( 1.1.2.1.1.56 NAME ( 'OXUserAssistant' ) DESC 'Users A
+ ssistant' SUP manager )
+olcAttributeTypes: {55}( 1.1.2.1.1.57 NAME ( 'OXUserCategories' ) DESC 'Users 
+ Categories' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {56}( 1.1.2.1.1.58 NAME ( 'OXUserOtherStreet' ) DESC 'Users
+  alternative Street' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatc
+ h SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {57}( 1.1.2.1.1.59 NAME ( 'OXUserOtherPostalCode' ) DESC 'U
+ sers alternative postal code' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubst
+ ringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {58}( 1.1.2.1.1.60 NAME ( 'OXUserOtherCity' ) DESC 'Users a
+ lternative city' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SY
+ NTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {59}( 1.1.2.1.1.61 NAME ( 'OXUserOtherState' ) DESC 'Users 
+ alternative State' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch 
+ SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {60}( 1.1.2.1.1.62 NAME ( 'OXUserOtherCountry' ) DESC 'User
+ s alternative Country' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMa
+ tch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {61}( 1.1.2.1.1.63 NAME ( 'OXUserTeleAssistant' ) DESC 'Use
+ rs Assistant TelephoneNumber' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubst
+ ringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {62}( 1.1.2.1.1.64 NAME ( 'OXUserTeleBusiness2' ) DESC 'Use
+ rs alternative business phone number' EQUALITY caseIgnoreMatch SUBSTR caseIgn
+ oreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {63}( 1.1.2.1.1.65 NAME ( 'OXUserTeleCallback' ) DESC 'User
+ s Callback' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {64}( 1.1.2.1.1.66 NAME ( 'OXUserTeleCar' ) DESC 'Users Car
+  Phone Number' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNT
+ AX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {65}( 1.1.2.1.1.67 NAME ( 'OXUserTeleCompany' ) DESC 'Users
+  Company Phone' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYN
+ TAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {66}( 1.1.2.1.1.68 NAME ( 'OXUserTeleHome2' ) DESC 'Users 2
+ nd. Home Phone ' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SY
+ NTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {67}( 1.1.2.1.1.69 NAME ( 'OXUserTeleMobile2' ) DESC 'Users
+  2nd mobile number' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {68}( 1.1.2.1.1.70 NAME ( 'OXUserTeleOther' ) DESC 'Users o
+ ther Phone' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {69}( 1.1.2.1.1.71 NAME ( 'OXUserTeleFax2' ) DESC 'Users 2n
+ d Telefax Number' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {70}( 1.1.2.1.1.72 NAME ( 'OXUserTelePrimary' ) DESC 'Users
+  primary Phone' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYN
+ TAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {71}( 1.1.2.1.1.73 NAME ( 'OXUserTeleRadio' ) DESC 'Users R
+ adio' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.
+ 1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {72}( 1.1.2.1.1.74 NAME ( 'OXUserTeleTTY' ) DESC 'Users TTY
+ /tdd ' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6
+ .1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {73}( 1.1.2.1.1.75 NAME ( 'OXUserInstantMessenger' ) DESC '
+ Users IM' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.
+ 3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {74}( 1.1.2.1.1.76 NAME ( 'OXUserInstantmessenger2' ) DESC 
+ 'Users 2nd IM' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNT
+ AX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {75}( 1.1.2.1.1.77 NAME ( 'OXUserEmail2' ) DESC 'Users 2nd 
+ Email' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6
+ .1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {76}( 1.1.2.1.1.78 NAME ( 'OXUserEmail3' ) DESC 'Users 3rd 
+ Email' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6
+ .1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {77}( 1.1.2.1.1.79 NAME ( 'OXUserUserUndef01' ) DESC 'Users
+  custom field 01' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {78}( 1.1.2.1.1.80 NAME ( 'OXUserUserUndef02' ) DESC 'Users
+  custom field 02' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {79}( 1.1.2.1.1.81 NAME ( 'OXUserUserUndef03' ) DESC 'Users
+  custom field 03' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {80}( 1.1.2.1.1.82 NAME ( 'OXUserUserUndef04' ) DESC 'Users
+  custom field 04' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {81}( 1.1.2.1.1.83 NAME ( 'OXUserUserUndef05' ) DESC 'Users
+  custom field 05' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {82}( 1.1.2.1.1.84 NAME ( 'OXUserUserUndef06' ) DESC 'Users
+  custom field 06' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {83}( 1.1.2.1.1.85 NAME ( 'OXUserUserUndef07' ) DESC 'Users
+  custom field 07' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {84}( 1.1.2.1.1.86 NAME ( 'OXUserUserUndef08' ) DESC 'Users
+  custom field 08' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {85}( 1.1.2.1.1.87 NAME ( 'OXUserUserUndef09' ) DESC 'Users
+  custom field 09' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {86}( 1.1.2.1.1.88 NAME ( 'OXUserUserUndef10' ) DESC 'Users
+  custom field 10' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {87}( 1.1.2.1.1.89 NAME ( 'OXUserUserUndef11' ) DESC 'Users
+  custom field 11' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {88}( 1.1.2.1.1.90 NAME ( 'OXUserUserUndef12' ) DESC 'Users
+  custom field 12' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {89}( 1.1.2.1.1.91 NAME ( 'OXUserUserUndef13' ) DESC 'Users
+  custom field 13' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {90}( 1.1.2.1.1.92 NAME ( 'OXUserUserUndef14' ) DESC 'Users
+  custom field 14' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {91}( 1.1.2.1.1.93 NAME ( 'OXUserUserUndef15' ) DESC 'Users
+  custom field 15' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {92}( 1.1.2.1.1.94 NAME ( 'OXUserUserUndef16' ) DESC 'Users
+  custom field 16' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {93}( 1.1.2.1.1.95 NAME ( 'OXUserUserUndef17' ) DESC 'Users
+  custom field 17' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {94}( 1.1.2.1.1.96 NAME ( 'OXUserUserUndef18' ) DESC 'Users
+  custom field 18' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {95}( 1.1.2.1.1.97 NAME ( 'OXUserUserUndef19' ) DESC 'Users
+  custom field 19' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {96}( 1.1.2.1.1.98 NAME ( 'OXUserUserUndef20' ) DESC 'Users
+  custom field 20' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {97}( 1.1.2.1.1.99 NAME ( 'OXUserSuffix' ) DESC 'Users Suff
+ ix Name' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3
+ .6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {98}( 1.1.2.1.1.100 NAME ( 'OXUserPostalCode' ) DESC 'Users
+  Postal Code address' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMat
+ ch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {99}( 1.1.2.1.1.101 NAME ( 'OXUserState' ) DESC 'Users Stat
+ e Name' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.
+ 6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {100}( 1.1.2.1.1.102 NAME ( 'OXUserMaritalStatus' ) DESC 'U
+ sers marital status' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatc
+ h SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {101}( 1.1.2.1.1.103 NAME ( 'OXUserChildren' ) DESC 'The nu
+ mber of users children ' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstrings
+ Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {102}( 1.1.2.1.1.104 NAME ( 'OXUserProfession' ) DESC 'The 
+ Users profession' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {103}( 1.1.2.1.1.105 NAME ( 'OXUserNickName' ) DESC 'Users 
+ Nick Name' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1
+ .3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {104}( 1.1.2.1.1.106 NAME ( 'OXUserSpouseName' ) DESC 'User
+ s Spouse Name' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNT
+ AX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {105}( 1.1.2.1.1.107 NAME ( 'OXUserAnniversary' ) DESC 'Any
+  user anniversary' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch 
+ SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {106}( 1.1.2.1.1.108 NAME ( 'OXUserComment' ) DESC 'A comme
+ nt about the Users' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {107}( 1.1.2.1.1.109 NAME ( 'OXUserDistributionList' ) DESC
+  'uid for the distribution List in the Databse' EQUALITY caseIgnoreMatch SUBS
+ TR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {108}( 1.1.2.1.1.110 NAME ( 'OXDayviewInterval' ) DESC 'int
+ erval for displaying ox appointments on the dayview' EQUALITY integerMatch SY
+ NTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: {109}( 1.1.2.1.1.111 NAME ( 'OXDayviewStartTime' ) DESC 'st
+ arttime for displaying ox appointments on the dayview' EQUALITY caseIgnoreMat
+ ch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {110}( 1.1.2.1.1.112 NAME ( 'OXDayviewEndTime' ) DESC 'endt
+ ime for displaying ox appointments on the dayview' EQUALITY caseIgnoreMatch S
+ UBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {111}( 1.1.2.1.1.113 NAME ( 'domainName' ) DESC 'The name o
+ f domain' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYN
+ TAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
+olcObjectClasses: {0}( 1.1.2.2.1.1 NAME 'OXUserObject' SUP top AUXILIARY DESC 
+ 'Additional Objectclass for OX User' MAY ( alias $ imapServer $ imapPort $ si
+ evePort $ mailDomain $ smtpServer $ smtpPort $ groupwareServer $ groupwareSer
+ verPort $ webmailServer $ webmailServerPort $ DBServer $ DBServerPort $ DBSer
+ verType $ reject $ relClientCert $ userCountry $ loginDestination $ birthDay 
+ $ colocRouteAddr $ mailEnabled $ lnetMailAccess $ vaddress $ IPPhone $ url $ 
+ otherpager $ otherfacsimiletelephonenumber $ homephone $ c $ info $ middleNam
+ e $ co $ conferenceInformation $ telexNumber $ OXGroupwareStyle $ OXWebmailSt
+ yle $ OXGroupID $ OXAppointmentDays $ OXTaskDays $ OXDayViewInterval $ OXDayV
+ iewStartTime $ OXDayViewEndTime $ OXTimeZone $ OXUserSuffix $ OXUserPostalCod
+ e $ OXUserCity $ OXUserState $ OXUserMaritalStatus $ OXUserChildren $ OXUserP
+ rofession $ OXUserNickName $ OXUserSpouseName $ OXUserAnniversary $ OXUserCom
+ ment $ OXUserPosition $ OXUserSalesVolume $ OXUserTaxID $ OXUserComReg $ OXUs
+ erBranches $ OXUserAssistant $ OXUserCategories $ OXUserOtherStreet $ OXUserO
+ therPostalCode $ OXUserOtherCity $ OXUserOtherState $ OXUserOtherCountry $ OX
+ UserTeleAssistant $ OXUserTeleBusiness2 $ OXUserTeleCallback $ OXUserTeleCar 
+ $ OXUserTeleCompany $ OXUserTeleHome2 $ OXUserTeleMobile2 $ OXUserTeleOther $
+  OXUserTeleFax2 $ OXUserTelePrimary $ OXUserTeleRadio $ OXUserTeleTTY $ OXUse
+ rInstantMessenger $ OXUserInstantmessenger2 $ OXUserEmail2 $ OXUserEmail3 $ O
+ XUserUserUndef01 $ OXUserUserUndef02 $ OXUserUserUndef03 $ OXUserUserUndef04 
+ $ OXUserUserUndef05 $ OXUserUserUndef06 $ OXUserUserUndef07 $ OXUserUserUndef
+ 08 $ OXUserUserUndef09 $ OXUserUserUndef10 $ OXUserUserUndef11 $ OXUserUserUn
+ def12 $ OXUserUserUndef13 $ OXUserUserUndef14 $ OXUserUserUndef15 $ OXUserUse
+ rUndef16 $ OXUserUserUndef17 $ OXUserUserUndef18 $ OXUserUserUndef19 $ OXUser
+ UserUndef20 $ OXUserDistributionList ))
+olcObjectClasses: {1}( 1.1.2.2.1.2 NAME 'OXResourceGroupObject' SUP top STRUCT
+ URAL DESC 'Additional Objectclass for OX ResourceGroup' MAY ( resourceGroupNa
+ me $ resourceGroupMember $ resourceGroupAvailable $ resourceGroupDescription 
+ ))
+olcObjectClasses: {2}( 1.1.2.2.1.3 NAME 'OXResourceObject' SUP top STRUCTURAL 
+ DESC 'Additional Objectclass for OX Resource' MAY ( resourceName $ resourceAv
+ ailable $ resourceDescription ))
+olcObjectClasses: {3}( 1.1.2.2.1.4 NAME 'OXVDomainObject' SUP top STRUCTURAL D
+ ESC 'virtual domains, can be used for lookups for MTA' MUST ( MTALocaldomain 
+ $ domainName ))
+olcObjectClasses: {4}( 1.1.2.2.1.5 NAME 'OXIMAPFolderObject' SUP top STRUCTURA
+ L DESC 'Shared IMAP Folder' MUST fn MAY ( mailDeliveryProgram $ description $
+  mailEnabled $ deliverToUID))
+olcObjectClasses: {5}( 1.1.2.2.1.6 NAME 'OXMailTransportObject' SUP top STRUCT
+ URAL DESC 'Transport maps in LDAP' MUST ( smtpDomainTransportNexthop $ smtpDo
+ main $ cn ) MAY description )
+structuralObjectClass: olcSchemaConfig
+entryUUID: 9c37df3e-4d4a-1030-819a-fb03d467c95a
+creatorsName: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
+createTimestamp: 20110728094920Z
+entryCSN: 20110728094920.093733Z#000000#000#000000
+modifiersName: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
+modifyTimestamp: 20110728094920Z
