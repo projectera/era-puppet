@@ -1,0 +1,55 @@
+#!/bin/bash
+confpath=/etc/nagios3/conf.d/contactgroups
+ldapbase='dc=projectera,dc=nl'
+
+getcnattr()
+{
+	cn=$1
+	attr=$2
+	ldapsearch -x "(cn=$cn)" $attr | grep $attr: | cut -d' ' -f 2
+}
+
+getuidattr()
+{
+	uid=$1
+	attr=$2
+	ldapsearch -x "(uid=$uid)" $attr | grep $attr: | cut -d' ' -f 2
+}
+
+
+# Find all vpses in ldap
+cns=$(ldapsearch -x '(objectClass=nagiosContactGroup)' cn)
+
+# Make sure we don't disable all contactgroups in case of bad ldap
+status=$?
+if [ $status -ne 0 ]; then
+	echo 'LDAP read failed!'
+	exit $status
+fi
+
+# Filter cns
+cns=$(echo "$cns" | grep cn: | cut -d' ' -f 2)
+
+
+# Write groups
+echo "$cns" | while read cn; do
+        members=$(
+                getcnattr $cn memberUid | while read uid; do
+                        iscontact=$(getuidattr $uid objectClass | grep nagiosContact | wc -l)
+                        if [ $iscontact -eq 1 ]; then
+                                echo $uid
+                        fi
+                done | head -c-1 | tr "\n" ','
+        )
+
+        # And write
+        cat > "$confpath/$cn.cfg" << EOF
+## Managed by ldap
+define contactgroup {
+        contactgroup_name       $cn
+        alias                   $cn
+        members                 $members
+}
+EOF
+done
+

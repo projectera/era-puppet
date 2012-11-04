@@ -1,0 +1,8 @@
+#!/bin/bash
+path=/opt/max
+
+$path/ldap2contacts
+$path/ldap2contactgroups
+#$path/ldap2vps
+
+/etc/init.d/nagios3 reload | tail -n+2

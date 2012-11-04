@@ -1,0 +1,49 @@
+#!/bin/bash
+confpath=/etc/nagios3/conf.d/contacts
+
+getattr()
+{
+	uid=$1
+	attr=$2
+	ldapsearch -x "(uid=$uid)" $attr | grep $attr: | cut -d' ' -f 2
+}
+
+#Find all nagios contacts in ldap
+uids=$(ldapsearch -x '(objectClass=nagiosContact)' uid)
+
+#Make sure we don't remove all contacts in case of bad ldap
+status=$?
+if [ $status -ne 0 ]; then
+	echo 'LDAP read failed!'
+	exit $status
+fi
+
+#Filter uids
+uids=$(echo "$uids" | grep uid: | cut -d' ' -f 2)
+
+#Remove previous contacts
+rm $confpath/*
+
+#Write contacts
+echo "$uids" | while read uid; do
+	email=$(getattr $uid NagiosMail)
+	hostp=$(getattr $uid HostNotificationPeriod)
+	servicep=$(getattr $uid ServiceNotificationPeriod)
+	hostopt=$(getattr $uid HostNotificationOptions)
+	serviceopt=$(getattr $uid ServiceNotificationOptions)
+
+	#Add config file
+	cat > $confpath/$uid.cfg << EOF
+define contact {
+	contact_name			$uid
+	alias				$uid
+	host_notification_period	$hostp
+	host_notification_options	$hostopt
+	service_notification_period	$servicep
+	service_notification_options	$serviceopt
+	service_notification_commands	notify-service-by-email
+	host_notification_commands	notify-host-by-email
+	email				$email
+}
+EOF
+done

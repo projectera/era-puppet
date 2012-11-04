@@ -1,0 +1,65 @@
+#!/bin/bash
+confpath=/etc/nagios3/conf.d/vps
+ldapbase='dc=vps,dc=bolkhuis,dc=nl'
+
+getattr()
+{
+	cn=$1
+	attr=$2
+	ldapsearch -x "(cn=$cn)" $attr | grep $attr: | cut -d' ' -f 2
+}
+
+
+# Find all vpses in ldap
+cns=$(ldapsearch -b 'dc=vps,dc=bolkhuis,dc=nl' -x '(objectClass=goServer)' cn)
+
+# Make sure we don't disable all vpses in case of bad ldap
+status=$?
+if [ $status -ne 0 ]; then
+	echo 'LDAP read failed!'
+	exit $status
+fi
+
+# Filter cns
+cns=$(echo "$cns" | grep cn: | cut -d' ' -f 2)
+
+
+# Write contacts
+echo "$cns" | while read cn; do
+	path=$confpath/$cn.cfg
+
+	if [ -f $path ]; then
+
+		continue
+	fi
+
+	alias=$(getattr $cn description)
+	address=$(getattr $cn ipHostNumber)
+
+	#Add config file
+	cat > $path << EOF
+# Created by LDAP, will be disabled (notifications) when deleted from ldap
+define host {
+	use		vps-host
+	host_name	$cn
+	alias		$alias
+	address		$address
+}
+EOF
+done
+
+# Disable all disabled or removed vpses
+files=$(ls $confpath | cut -d. -f1)
+
+echo "$files" | while read cn; do
+	path=$confpath/$cn.cfg
+
+	# Remove all disabled notifications
+	sed -i -e "/notifications_enabled	0/d" $path
+
+	# Disable notifications if disabled
+	active=$(ldapsearch -x "(&(cn=$cn)(gotoMode=active))" gotoMode | grep gotoMode: | wc -l)
+	if [ $active -eq 0 ]; then
+		sed -i -e "s/}/	notifications_enabled	0\n}/g" $path
+	fi
+done
