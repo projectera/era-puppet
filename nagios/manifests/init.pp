@@ -4,7 +4,7 @@ class nagios {
 	}
 	
 	file { "/opt/max":
-		ensure => "directory',
+		ensure => "directory",
 		mode => 775,
 	}
 
