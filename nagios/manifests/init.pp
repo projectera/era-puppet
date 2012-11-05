@@ -13,33 +13,51 @@ class nagios {
 		mode => 775,
 	}
 
-	file { "/opt/max/ldap2contactgroups":
+	file { "/opt/max/nagios":
+		ensure => directory,
+		mode => 775,
+		require => File["/opt/max"],
+	}
+
+	file { "/opt/max/nagios/plugins":
+		ensure => directory,
+		mode => 775,
+		recurse => true,
+		source => "puppet:///modules/nagios/plugins",
+		require => File["/opt/max/nagios"],
+	}
+
+	file { "/opt/max/nagios/ldap2contactgroups":
 		ensure => file,
 		mode => 774,
 		source => "puppet:///modules/nagios/ldap2contactgroups",
+		require => File["/opt/max/nagios"],
 	}
 
-	file { "/opt/max/ldap2contacts":
+	file { "/opt/max/nagios/ldap2contacts":
 		ensure => file,
 		mode => 774,
 		source => "puppet:///modules/nagios/ldap2contacts",
+		require => File["/opt/max/nagios"],
 	}
 
-	file { "/opt/max/ldap2vps":
+	file { "/opt/max/nagios/ldap2vps":
 		ensure => file,
 		mode => 774,
 		source => "puppet:///modules/nagios/ldap2vps",
+		require => File["/opt/max/nagios"],
 	}
 
-	file { "/opt/max/ldap2nagios":
+	file { "/opt/max/nagios/ldap2nagios":
 		ensure => file,
 		mode => 774,
 		source => "puppet:///modules/nagios/ldap2nagios",
+		require => File["/opt/max/nagios"],
 	}
 
 	file { "/etc/cron.hourly/ldap2nagios":
 		ensure => link,
-		target => "/opt/max/ldap2nagios",
+		target => "/opt/max/nagios/ldap2nagios",
 	}
 
 	file { "/etc/nagios3/conf.d/contactgroups":
@@ -71,4 +89,12 @@ class nagios {
 	}
 
 	apache::loadmodule { "authnz_ldap": }
+
+	file { "/etc/nagios3/conf.d/checks":
+		ensure => directory,
+		mode => 775,
+		recurse => true,
+		source => "puppet:///modules/nagios/checks",
+		notify => Service["nagios3"],
+	}
 }

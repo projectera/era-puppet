@@ -1,0 +1,15 @@
+/etc/init.d/puppet status > /dev/null
+status=$?
+code=1
+text='Unknown'
+
+if [ $status -eq 0 ]; then
+        code=0
+        text='Running'
+fi
+if [ $status -eq 4 ]; then
+        code=2
+        text='Not running'
+fi
+echo $text
+exit $code
