@@ -1,5 +1,5 @@
 #!/bin/bash
-path=/opt/max
+path=/opt/max/nagios
 
 $path/ldap2contacts
 $path/ldap2contactgroups
