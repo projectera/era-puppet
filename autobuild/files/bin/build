@@ -1,0 +1,3 @@
+#!/bin/bash
+xbuild /verbosity:normal /nologo /p:Configuration=Release
+/opt/eras/autobuild/integrate

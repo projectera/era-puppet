@@ -1,0 +1,14 @@
+#!/bin/bash
+#Copy exes
+find . -name *.exe | grep -v obj |
+while read file; do
+	cp "$file" /opt/eras/bin/
+done
+
+#Copy dlls
+find . -name *.dll | grep -v obj |
+while read file; do
+	cp "$file" /opt/eras/bin/
+done
+
+/opt/eras/bin/KillServer.exe

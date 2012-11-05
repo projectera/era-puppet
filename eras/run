@@ -1,0 +1,5 @@
+#!/bin/bash
+while true; do
+	/opt/era/bin/EraS.exe | tee /var/log/eras.log
+	sleep 20
+done

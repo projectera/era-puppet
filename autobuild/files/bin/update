@@ -1,0 +1,10 @@
+#!/bin/bash
+(
+cd /var/lib/autobuild/
+ls | while read repo; do
+	cd $repo
+	git pull > /dev/null
+	cd - > /dev/null
+done
+)
+exit 0
